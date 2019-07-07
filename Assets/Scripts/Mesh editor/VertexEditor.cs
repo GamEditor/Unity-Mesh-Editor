@@ -1,10 +1,16 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class VertexEditor : DragIt
 {
     private MeshInfo m_MeshInfo;
 
-    [HideInInspector] public int m_VertexIndex;   // it will fill from MeshInfo
+    private List<int> m_VertexIndex;   // it will fill from MeshInfo by calling AddVertexIndex()
+
+    private void Awake()
+    {
+        m_VertexIndex = new List<int>();
+    }
 
     void Start()
     {
@@ -15,5 +21,14 @@ public class VertexEditor : DragIt
     {
         base.OnMouseDrag();
         m_MeshInfo.SetVertex(m_VertexIndex, transform.localPosition);
+    }
+
+    /// <summary>
+    /// Adds an VertexIndex 
+    /// </summary>
+    /// <param name="index">The index of vertex</param>
+    public void AddVertexIndex(int index)
+    {
+        m_VertexIndex.Add(index);
     }
 }
