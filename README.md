@@ -1,2 +1,2 @@
 # Unity-Mesh-Editor
-a simple runtime mesh editor
+A simple runtime mesh editor
