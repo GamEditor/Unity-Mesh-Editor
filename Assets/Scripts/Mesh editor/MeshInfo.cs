@@ -47,6 +47,11 @@ public class MeshInfo : MonoBehaviour
         // tip: we don't need to have any reference to instantiated mini cubes
         // because the cube is independent itself
 
+        // if mesh has no vertices, it will cause an error here. we should check it here,
+        // not in anywhere else (because maybe forget to check)
+        if (m_Mesh.vertices.Length < 1)
+            return;
+
         // i need have a reference to entire generated VertexEditors till the end of this method's scope
         List<VertexEditor> vertexEditors = new List<VertexEditor>();
 
