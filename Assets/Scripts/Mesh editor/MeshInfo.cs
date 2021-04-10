@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -11,7 +10,7 @@ public class MeshInfo : MonoBehaviour
 
     private List<Vector3> m_Vertices;   // a copy of m_Mesh.vertices.ToList()
 
-    public VertexEditor m_MiniCubePrefab;
+    public VertexEditor m_VertexEtitorPrefab;
 
     void Start()
     {
@@ -56,7 +55,7 @@ public class MeshInfo : MonoBehaviour
         List<VertexEditor> vertexEditors = new List<VertexEditor>();
 
         // the first one is going to created always
-        vertexEditors.Add(Instantiate(m_MiniCubePrefab, transform));
+        vertexEditors.Add(Instantiate(m_VertexEtitorPrefab, transform));
         vertexEditors[0].transform.localPosition = m_Vertices[0];
         vertexEditors[0].AddVertexIndex(0);
 
@@ -70,16 +69,12 @@ public class MeshInfo : MonoBehaviour
             }
             else
             {
-                vertexEditors.Add(Instantiate(m_MiniCubePrefab, transform));
+                vertexEditors.Add(Instantiate(m_VertexEtitorPrefab, transform));
 
                 int last = vertexEditors.Count - 1;
                 vertexEditors[last].transform.localPosition = m_Vertices[i];
                 vertexEditors[last].AddVertexIndex(i);
             }
-
-            //VertexEditor vertexEditor = Instantiate(m_MiniCubePrefab, transform);
-            //vertexEditor.transform.localPosition = m_Vertices[i];
-            //vertexEditor.m_VertexIndex[i]. = i;
         }
     }
 
